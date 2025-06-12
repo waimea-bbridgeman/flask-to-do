@@ -21,11 +21,58 @@
 
     <p>Do them...</p>
 
-    <p>It includes...</p>
+   
 
-    {{ task.name }}
+    <article>
 
-    <a href="/things" role="button">Go to the Things...</a>
+        <ul>
+           
+        
+            {% for tasks in task %}
+
+                <li>
+                    
+                    {{ task.name }}
+                    
+                </li>
+
+            {% else %}
+
+                <p>idk tbh</p>
+
+            {% endfor %}
+        </ul>
+
+    </article>
+
+
+    <article>
+
+        <h3>Add a New Task...</h3>
+
+        <form action="/add" method="POST">
+
+            <input
+                type="text"
+                name="name"
+                placeholder="Name of new task"
+                required
+            >
+
+            <input
+                type="number"
+                name="priority"
+                min="1"
+                placeholder="Priority level"
+                required
+            >
+
+            <button>Add the Task</button>
+
+        </form>
+
+    </article>
 
 {% endblock %}
 
+ 
