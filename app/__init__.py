@@ -24,22 +24,15 @@ register_error_handlers(app)
 # Home page route
 #-----------------------------------------------------------
 @app.get("/")
-def index():
-   
-      with connect_db() as client:
+def show_all_task():
+  with connect_db() as client:
         # Get all the things from the DB
-        sql = "SELECT name, priority, complete FROM tasks ORDER BY name DESC"
+        sql = "SELECT name, priority, complete FROM tasks ORDER BY priority DESC"
         result = client.execute(sql)
-        tasks = result.rows[0]
-       
-        name = ("name")
-        priority = ("priority")
+        tasks = result.rows
         
-        # Add the thing to the DB
-        sql = "INSERT INTO tasks (name, priority) VALUES (?, ?)"
-        values = [name, priority]
-        client.execute(sql, values)
-        return render_template("pages/home.jinja", task=tasks)
+        
+        return render_template("pages/home.jinja", tasks=tasks)
        
    
        

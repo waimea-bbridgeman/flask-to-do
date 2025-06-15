@@ -25,23 +25,30 @@
 
     <article>
 
-        <ul>
-           
-        
-            {% for tasks in task %}
+       
+           {% for task in tasks %}
 
-                <li>
-                    
-                    {{ task.name }}
-                    
-                </li>
+            <li>
+           
+                
+            {{ task.priority }} {{ task.name }} 
+           
+            
+            
+             {% if task.complete %}
+                🗹
+            {% else %}
+                ☐
+            {% endif %}
+            
+            </li>   
 
             {% else %}
 
-                <p>idk tbh</p>
+            <p>idk tbh</p>
 
-            {% endfor %}
-        </ul>
+        {% endfor %}
+       
 
     </article>
 
