@@ -23,36 +23,52 @@
 
    
 
-    <article>
+    <article id="tasks">
 
        
-           {% for task in tasks %}
+        {% for task in tasks %}
 
-            <li>
-           
-                
-            {{ task.priority }} {{ task.name }} 
-           
+          
+           <li>
+                <span>{{ task.priority }}</span> 
+
+                <span>{{ task.name }}</span> 
             
+            </li>
+           
+           <div id="checkbox">
+                {% if task.complete %} 
+                🗹 
+                {% else %}
+                ☐ 
+                {% endif %}
+            </div> 
+
+
+           {% if complete in tasks %}
             
-             {% if task.complete %}
-                🗹
-            {% else %}
-                ☐
+                <a href="/complete/<int:id>{{ task.id }}">☐</a>
+
             {% endif %}
+    
+        
+            {% if incomplete in tasks %}
             
-            </li>   
+                <a href="/incomplete/<int:id>{{ task.id }}">🗹</a>
+
+            {% endif %}
+
+               
 
             {% else %}
 
-            <p>idk tbh</p>
+                <p>idk tbh</p>
 
         {% endfor %}
        
-
     </article>
-
-
+    
+        
     <article>
 
         <h3>Add a New Task...</h3>

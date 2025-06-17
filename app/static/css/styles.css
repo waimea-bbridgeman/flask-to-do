@@ -15,8 +15,8 @@
     flex: 1;
 }
 
-div #priority {
-    color: red;
+article#tasks div#checkbox {
+    justify-content: flex-end;
 }
 
 /* MESSAGES -------------------------------------------- */
