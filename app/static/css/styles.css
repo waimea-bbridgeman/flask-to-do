@@ -15,9 +15,20 @@
     flex: 1;
 }
 
-article#tasks div#checkbox {
-    justify-content: flex-end;
+article#tasks {
+    max-width: 800px;
+    justify-content: space-between;
 }
+
+article#form {
+    max-width: 1000px;
+   
+}
+
+main {
+    justify-content: center;
+}
+
 
 /* MESSAGES -------------------------------------------- */
 

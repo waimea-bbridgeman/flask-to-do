@@ -27,7 +27,7 @@ register_error_handlers(app)
 def show_all_task():
   with connect_db() as client:
         # Get all the tasks from the DB
-        sql = "SELECT name, priority, complete FROM tasks ORDER BY priority DESC"
+        sql = "SELECT id, name, priority, complete FROM tasks ORDER BY priority DESC"
         result = client.execute(sql)
         tasks = result.rows
         
@@ -102,7 +102,7 @@ def delete_a_task(id):
 @app.get("/complete/<int:id>")
 def complete(id):
     with connect_db() as client:
-        sql = "UPDATE complete FROM tasks WHERE id=?"
+        sql = "UPDATE tasks SET complete=1 WHERE id=?"
         values = [id]
         client.execute(sql, values)
     return redirect("/")
@@ -110,7 +110,7 @@ def complete(id):
 @app.get("/incomplete/<int:id>")
 def incomplete(id):
     with connect_db() as client:
-        sql = "UPDATE complete FROM tasks WHERE id=?"
+        sql = "UPDATE tasks SET complete=0 WHERE id=?"
         values = [id]
         client.execute(sql, values)
     return redirect("/")
